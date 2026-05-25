@@ -1,8 +1,9 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { Sun, Moon, Menu, X } from "lucide-react";
+import { Sun, Moon, Menu, X, Globe } from "lucide-react";
 import { useTheme } from "@/components/ThemeProvider";
+import { useLanguage } from "@/components/LanguageProvider";
 
 const navLinks = [
   { label: "Home", href: "#home" },
@@ -26,6 +27,7 @@ export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const { theme, toggleTheme } = useTheme();
+  const { language, toggleLanguage } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -97,8 +99,18 @@ export default function Navbar() {
             })}
           </div>
 
-          {/* Actions: Theme Toggle + CTA Button */}
-          <div className="flex items-center gap-4">
+          {/* Actions: Theme Toggle + Language Switcher + CTA Button */}
+          <div className="flex items-center gap-3">
+            {/* Language Switcher */}
+            <button
+              onClick={toggleLanguage}
+              className="p-2.5 rounded-full border border-border-base bg-bg-card hover:bg-bg-secondary hover:border-border-hover text-text-primary transition-all active:scale-95 cursor-pointer flex items-center justify-center gap-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-text-primary focus-visible:ring-offset-2"
+              aria-label={`Switch language to ${language === "id" ? "English" : "Indonesian"}`}
+            >
+              <Globe className="w-5 h-5" />
+              <span className="text-[10px] font-bold uppercase tracking-wider">{language === "id" ? "en" : "id"}</span>
+            </button>
+
             {/* Theme Toggle Button */}
             <button
               onClick={toggleTheme}
