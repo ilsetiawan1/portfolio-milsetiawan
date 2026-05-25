@@ -95,13 +95,14 @@ Website ini berfungsi sebagai:
      * **CV Akurat Sukses Sejati**: Next.js, React, TypeScript, Supabase (April 2026).
      * **Portal Berita Digital (Info Seputar +62)**: Laravel, PHP, MySQL, Tailwind CSS (Mei 2026).
   2. **Certificates Tab**:
-     * Menampilkan daftar sertifikat digital Dicoding Indonesia dengan thumbnail, judul, penerbit, dan tautan kredensial.
+     * Saat ini menampilkan kartu placeholder dengan pesan **"Data belum ditambahkan"** (Sertifikat saat ini sedang dalam proses pembaruan) sebagai default state sebelum data dinamis diintegrasikan melalui database (Supabase).
   3. **Tech Stack Tab**:
-     * Grid kartu teknologi berisi 19 brand logo resmi (inline SVG) dan teks nama teknologi (HTML5, CSS3, JavaScript, TypeScript, React, Next.js, Tailwind CSS, PHP, Laravel, Node.js, Supabase, PostgreSQL, MySQL, MongoDB, Git, GitHub, Figma, Postman, VS Code).
+     * Grid kartu teknologi berisi 19 brand logo resmi dengan ikon SVG yang akurat dan terstandarisasi (HTML5, CSS3, JavaScript, TypeScript, React, Next.js, Tailwind CSS, PHP, Laravel, Node.js, Supabase, PostgreSQL, MySQL, MongoDB, Git, GitHub, Figma, Postman, VS Code).
 
 ### 5.5 Contact Section
 * **Contents**: Form kontak (Name, Email, Message) dan tautan media sosial eksternal (GitHub, LinkedIn, Instagram, TikTok, Email).
 * **Requirements**: Form validation, Web3Forms API integration (`https://api.web3forms.com/submit`) via `.env.local` to send emails directly to `m.ilsetiawan1@gmail.com`.
+  * **Pemberitahuan Sistem**: Untuk mengaktifkan fitur ini, Access Key dari Web3Forms harus dikonfigurasi di file `.env.local` dengan variable `NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY`.
 
 ### 5.6 Footer
 * **Contents**: Copyright & Year, Navigation links (About, Portfolio, Contact), Social links.
@@ -109,13 +110,51 @@ Website ini berfungsi sebagai:
 ---
 
 ## 6. Technology Stack
-* **Framework**: Next.js 16 (Webpack bundler)
-* **UI**: React 19, Lucide Icons, Custom TechIcon SVGs
-* **Styling**: Tailwind CSS v4, custom utility classes, CSS Variables
+* **Framework**: Next.js (Page / App Router)
+* **UI**: React, Lucide Icons, Custom TechIcon SVGs
+* **Styling**: Vanilla CSS / Tailwind CSS, custom utility classes, CSS Variables
 * **Contact Delivery**: Web3Forms API integration
 
 ---
 
-## 7. Future Enhancements
-* Penambahan sistem login admin untuk mengelola projek dan sertifikat secara langsung.
-* Multi-language support (Bahasa Indonesia & English).
+## 7. Future CMS Roadmap (Supabase Integration)
+Untuk tahap selanjutnya, website akan diintegrasikan dengan database Supabase untuk pengelolaan data dinamis (Projects & Certificates) via antarmuka admin.
+
+### 7.1 Database & API Details
+* **Project Name**: `portfolio-milsetiawan`
+* **Project ID**: `mmrbwgzfegfyjajjjdnt`
+* **Supabase Anon Public API Key**:
+  ```env
+  NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1tcmJ3Z3pmZWdmeWphampqZG50Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzk2ODgzMjIsImV4cCI6MjA5NTI2NDMyMn0.rtlBhDhfDWSw28ScU8ycRhqyBpAFKoIidp-TKQZwL68
+  ```
+* **Supabase Service Role Key**:
+  ```env
+  SUPABASE_SERVICE_ROLE_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1tcmJ3Z3pmZWdmeWphampqZG50Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc3OTY4ODMyMiwiZXhwIjoyMDk1MjY0MzIyfQ.VefHuy55VTOTAm_AaKIvyupI9umDXcEANqwFlbVddNU
+  ```
+
+### 7.2 CMS Architecture & Folder Structure
+* **Admin Login Route**: `/seputaradmin/login`
+* **Authentication**: Supabase Auth (Email & Password login).
+* **Database Schema**:
+  1. **Table: `projects`**
+     * `id` (uuid, primary key)
+     * `title` (text)
+     * `description` (text)
+     * `image_url` (text)
+     * `tech_stack` (text[], array of strings matching tech key name)
+     * `project_url` (text, nullable)
+     * `repo_url` (text, nullable)
+     * `date` (text)
+     * `category` (text)
+     * `created_at` (timestamp)
+  2. **Table: `certificates`**
+     * `id` (uuid, primary key)
+     * `title` (text)
+     * `issuer` (text)
+     * `credential_url` (text, nullable)
+     * `issue_date` (text)
+     * `image_url` (text, nullable)
+     * `created_at` (timestamp)
+* **CRUD Functionality**:
+  * Tampilan dashboard admin setelah login yang menyediakan form Tambah, Edit, dan Hapus untuk data di tabel `projects` dan `certificates`.
+  * Integrasi RLS (Row Level Security) pada Supabase untuk membatasi aksi Write/Update/Delete hanya kepada admin terautentikasi, sementara Read diizinkan secara public.
