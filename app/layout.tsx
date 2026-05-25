@@ -54,6 +54,16 @@ export const metadata: Metadata = {
     },
   },
   manifest: "/manifest.json",
+  icons: {
+    icon: [
+      { url: "/lam-favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/lam-favicon-32x32.png", sizes: "32x32", type: "image/png" },
+    ],
+    apple: [
+      { url: "/lam-apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+    shortcut: "/lam-favicon.ico",
+  },
   appleWebApp: {
     capable: true,
     statusBarStyle: "black-translucent",
@@ -76,25 +86,9 @@ export default function RootLayout({
   return (
     <html lang="id" className="dark" suppressHydrationWarning>
       <head>
-        {/* PWA Apple Touch Icon */}
-        <link rel="apple-touch-icon" href="/icons/icon-192x192.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/icons/icon-32x32.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/icons/icon-16x16.png" />
-        {/* Anti-flash theme init script */}
         <script
           dangerouslySetInnerHTML={{
-            __html: `
-              (function() {
-                try {
-                  const stored = localStorage.getItem('theme');
-                  if (stored === 'light' || stored === 'dark') {
-                    document.documentElement.className = stored;
-                  } else {
-                    document.documentElement.className = 'dark';
-                  }
-                } catch (_) {}
-              })()
-            `,
+            __html: `(function(){try{const s=localStorage.getItem('theme');if(s==='light'||s==='dark'){document.documentElement.className=s;}else{document.documentElement.className='dark';}}catch(_){}})();`,
           }}
         />
       </head>
