@@ -2,6 +2,8 @@
 
 import React, { useState } from "react";
 import { Mail, Send, Loader2 } from "lucide-react";
+import { useLanguage } from "@/components/LanguageProvider";
+import { translations } from "@/data/translations";
 import SectionWrapper from "@/components/layout/SectionWrapper";
 
 const socials = [
@@ -76,6 +78,9 @@ const socials = [
 ];
 
 export default function Contact() {
+  const { language } = useLanguage();
+  const t = translations[language].contact;
+
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [errors, setErrors] = useState({ name: "", email: "", message: "" });
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
@@ -90,18 +95,18 @@ export default function Contact() {
     const e = { name: "", email: "", message: "" };
     let ok = true;
     if (!form.name.trim()) {
-      e.name = "Nama wajib diisi.";
+      e.name = t.errName;
       ok = false;
     }
     if (!form.email.trim()) {
-      e.email = "Email wajib diisi.";
+      e.email = t.errEmail;
       ok = false;
     } else if (!/\S+@\S+\.\S+/.test(form.email)) {
-      e.email = "Format email tidak valid.";
+      e.email = t.errEmailVal;
       ok = false;
     }
     if (!form.message.trim()) {
-      e.message = "Pesan wajib diisi.";
+      e.message = t.errMessage;
       ok = false;
     }
     setErrors(e);
@@ -155,11 +160,10 @@ export default function Contact() {
         <div className="flex flex-col gap-8 animate-on-scroll">
           <div>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-text-primary mb-4">
-              Get In Touch
+              {t.title}
             </h2>
             <p className="text-base md:text-lg text-text-secondary leading-relaxed max-w-md">
-              Have a project in mind or just want to chat about web development? I&apos;m always open
-              to new challenges.
+              {t.subtitle}
             </p>
           </div>
 
@@ -200,13 +204,13 @@ export default function Contact() {
           className="flex flex-col gap-5 p-6 md:p-8 bg-bg-card border border-border-base rounded-2xl hover:border-border-hover transition-all duration-300 animate-on-scroll focus-within:ring-2 focus-within:ring-text-primary/20"
         >
           <div className="flex flex-col gap-2">
-            <label className="text-sm font-semibold text-text-secondary">Name</label>
+            <label className="text-sm font-semibold text-text-secondary">{t.labelName}</label>
             <input
               type="text"
               name="name"
               value={form.name}
               onChange={handleChange}
-              placeholder="John Doe"
+              placeholder={t.placeholderName}
               className={errors.name ? inputError : inputNormal}
               aria-required="true"
               aria-invalid={!!errors.name}
@@ -217,7 +221,7 @@ export default function Contact() {
           </div>
 
           <div className="flex flex-col gap-2">
-            <label className="text-sm font-semibold text-text-secondary">Email</label>
+            <label className="text-sm font-semibold text-text-secondary">{t.labelEmail}</label>
             <input
               type="email"
               name="email"
@@ -234,12 +238,12 @@ export default function Contact() {
           </div>
 
           <div className="flex flex-col gap-2">
-            <label className="text-sm font-semibold text-text-secondary">Message</label>
+            <label className="text-sm font-semibold text-text-secondary">{t.labelMessage}</label>
             <textarea
               name="message"
               value={form.message}
               onChange={handleChange}
-              placeholder="How can I help you?"
+              placeholder={t.placeholderMessage}
               rows={4}
               className={`resize-none ${errors.message ? inputError : inputNormal}`}
               aria-required="true"
@@ -270,12 +274,12 @@ export default function Contact() {
 
           {status === "success" && (
             <div className="p-4 bg-green-500/10 border border-green-500/20 text-green-600 dark:text-green-400 rounded-xl text-sm font-semibold text-center animate-fade-in">
-              Pesan berhasil dikirim! Saya akan segera menghubungi Anda.
+              {t.msgSuccess}
             </div>
           )}
           {status === "error" && (
             <div className="p-4 bg-red-500/10 border border-red-500/20 text-red-600 dark:text-red-400 rounded-xl text-sm font-semibold text-center animate-fade-in">
-              Terjadi kesalahan. Silakan coba lagi.
+              {t.msgError}
             </div>
           )}
         </form>
