@@ -2,12 +2,17 @@ import React from "react";
 import Image from "next/image";
 import { ExternalLink } from "lucide-react";
 import { Project } from "@/types";
+import { useLanguage } from "@/components/LanguageProvider";
 
 interface ProjectCardProps {
   project: Project;
 }
 
 export default function ProjectCard({ project }: ProjectCardProps) {
+  const { language } = useLanguage();
+  const displayDate = language === "en" ? project.date_en : project.date_id;
+  const displayDescription = language === "en" ? project.description_en : project.description_id;
+
   return (
     <article
       className="group flex flex-col bg-bg-card border border-border-base rounded-2xl overflow-hidden hover:border-border-hover hover:-translate-y-1.5 hover:shadow-xl dark:hover:shadow-black/40 transition-all duration-300 ease-out focus-within:ring-2 focus-within:ring-text-primary"
@@ -22,7 +27,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
         <span className="absolute top-3 right-3 bg-bg-secondary/90 backdrop-blur-md px-3 py-1 rounded-full text-xs font-semibold text-text-secondary border border-border-base">
-          {project.date}
+          {displayDate}
         </span>
       </div>
 
@@ -49,7 +54,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
             {project.title}
           </h3>
           <p className="text-sm md:text-base text-text-secondary leading-relaxed line-clamp-3">
-            {project.description}
+            {displayDescription}
           </p>
         </div>
 
