@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import { LanguageProvider } from "@/components/LanguageProvider";
 
 export const metadata: Metadata = {
   title: "Muhammad Ilham Setiawan | Full-Stack Web Developer",
@@ -99,7 +100,9 @@ export default function RootLayout({
       </head>
       <body className="antialiased bg-bg-primary text-text-primary">
         <ThemeProvider>
-          {children}
+          <LanguageProvider>
+            {children}
+          </LanguageProvider>
         </ThemeProvider>
       </body>
     </html>
