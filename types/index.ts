@@ -1,9 +1,11 @@
 export interface Project {
   id: number;
   title: string;
-  description: string;
+  description_id: string;
+  description_en: string;
   image: string;
-  date: string;
+  date_id: string;
+  date_en: string;
   techStack: string[];
   liveUrl: string | null;
   githubUrl: string;
