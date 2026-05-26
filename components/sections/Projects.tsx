@@ -180,22 +180,22 @@ export default function Projects() {
 
         {/* Tech Stack Tab (Redesigned Skills) */}
         {activeTab === "tech" && (
-          <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-2.5 min-[380px]:gap-3.5 sm:gap-6">
+          <div className="grid grid-cols-4 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-8 gap-2 min-[360px]:gap-2.5 sm:gap-6">
             {skills.map((skill) => (
               <div
                 key={skill.name}
-                className="group relative flex flex-col items-center justify-center p-3 min-[380px]:p-4 sm:p-6 bg-bg-card border border-border-base rounded-xl sm:rounded-2xl hover:bg-bg-card-hover hover:border-border-hover hover:-translate-y-1 hover:shadow-lg dark:hover:shadow-black/25 transition-all duration-300 ease-out"
+                className="group relative flex flex-col items-center justify-center p-2 min-[360px]:p-2.5 sm:p-6 bg-bg-card border border-border-base rounded-xl sm:rounded-2xl hover:bg-bg-card-hover hover:border-border-hover hover:-translate-y-1 hover:shadow-lg dark:hover:shadow-black/25 transition-all duration-300 ease-out"
               >
                 {/* Decorative gradient overlay */}
                 <div className="absolute inset-0 pointer-events-none rounded-xl sm:rounded-2xl bg-gradient-to-br from-text-primary/[0.015] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 
                 {/* Icon wrapper */}
-                <div className="w-9 h-9 min-[380px]:w-11 min-[380px]:h-11 sm:w-16 sm:h-16 flex items-center justify-center mb-1.5 sm:mb-3 group-hover:scale-105 transition-transform duration-300">
-                  <TechIcon name={skill.name} className="w-6 h-6 min-[380px]:w-8 min-[380px]:h-8 sm:w-12 sm:h-12" />
+                <div className="w-8 h-8 min-[360px]:w-10 min-[360px]:h-10 sm:w-16 sm:h-16 flex items-center justify-center mb-1 sm:mb-3 group-hover:scale-105 transition-transform duration-300">
+                  <TechIcon name={skill.name} className="w-5 h-5 min-[360px]:w-7 min-[360px]:h-7 sm:w-12 sm:h-12" />
                 </div>
                 
                 {/* Name */}
-                <span className="text-[10px] min-[380px]:text-xs sm:text-sm font-bold text-text-primary tracking-wide text-center">
+                <span className="text-[9px] min-[360px]:text-[10px] sm:text-sm font-bold text-text-primary tracking-wide text-center">
                   {skill.name}
                 </span>
               </div>
