@@ -149,7 +149,7 @@ export default function Contact() {
   };
 
   const inputBase =
-    "w-full bg-bg-secondary border text-text-primary placeholder:text-text-muted p-4 rounded-xl outline-none transition-all duration-200 focus:ring-2 focus:ring-text-primary/10";
+    "w-full bg-bg-secondary border text-text-primary placeholder:text-text-muted placeholder:text-xs md:placeholder:text-base text-xs md:text-base p-4 rounded-xl outline-none transition-all duration-200 focus:ring-2 focus:ring-text-primary/10";
   const inputNormal = `${inputBase} border-border-base focus:border-border-hover`;
   const inputError = `${inputBase} border-red-500/50 focus:border-red-500 focus:ring-red-500/10`;
 
@@ -162,7 +162,7 @@ export default function Contact() {
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-text-primary mb-4">
               {t.title}
             </h2>
-            <p className="text-base md:text-lg text-text-secondary leading-relaxed max-w-md">
+            <p className="text-xs md:text-lg text-text-secondary leading-relaxed max-w-md">
               {t.subtitle}
             </p>
           </div>
@@ -227,7 +227,7 @@ export default function Contact() {
               name="email"
               value={form.email}
               onChange={handleChange}
-              placeholder="john@example.com"
+              placeholder={t.placeholderEmail}
               className={errors.email ? inputError : inputNormal}
               aria-required="true"
               aria-invalid={!!errors.email}
