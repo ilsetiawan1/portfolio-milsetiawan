@@ -9,7 +9,8 @@ export const translations = {
     },
     portfolio: {
       title: "Portfolio",
-      subtitle: "Jelajahi perjalanan saya melalui proyek, sertifikasi, dan keahlian teknis. Setiap bagian mewakili tonggak pencapaian dalam proses belajar saya.",
+      subtitle_part1: "Jelajahi perjalanan saya melalui proyek, sertifikasi, dan keahlian teknis.",
+      subtitle_part2: " Setiap bagian mewakili tonggak pencapaian dalam proses belajar saya.",
     },
     contact: {
       title: "Contact",
@@ -37,7 +38,8 @@ export const translations = {
     },
     portfolio: {
       title: "Portfolio",
-      subtitle: "Explore my journey through projects, certifications, and technical expertise. Each section represents a milestone in my continuous learning path.",
+      subtitle_part1: "Explore my journey through projects, certifications, and technical expertise.",
+      subtitle_part2: " Each section represents a milestone in my continuous learning path.",
     },
     contact: {
       title: "Contact",
