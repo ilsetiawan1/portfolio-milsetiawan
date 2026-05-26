@@ -32,7 +32,7 @@ function TimelineCard({ item, idx, language }: { item: TimelineItem; idx: number
       <h4 className="text-sm md:text-base font-semibold text-text-secondary">
         {item.company}
       </h4>
-      <p className="text-sm md:text-base text-text-secondary mt-3 leading-relaxed">
+      <p className="text-xs md:text-base text-text-secondary mt-3 leading-relaxed">
         {displayDesc}
         {displayDetails && (
           <>
@@ -85,14 +85,14 @@ export default function About() {
             {bioParagraphs.map((para, idx) => {
               if (idx === 0) {
                 return (
-                  <p key={idx} className="text-base md:text-lg text-text-secondary leading-relaxed">
+                  <p key={idx} className="text-xs md:text-lg text-text-secondary leading-relaxed">
                     {para}
                   </p>
                 );
               }
               return (
                 <div key={idx} className={isExpanded ? "block" : "hidden md:block"}>
-                  <p className="text-base md:text-lg text-text-secondary leading-relaxed">
+                  <p className="text-xs md:text-lg text-text-secondary leading-relaxed">
                     {para}
                   </p>
                 </div>
