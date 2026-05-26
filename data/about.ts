@@ -5,6 +5,8 @@ export interface TimelineItem {
   period: string;
   description_id: string;
   description_en: string;
+  details_id?: string;
+  details_en?: string;
   isEducation?: boolean;
 }
 
@@ -24,8 +26,10 @@ export const aboutData = {
       role: "Web Developer Intern",
       company: "Evolution IT Yogyakarta",
       period: "April 2026 - Juni 2026",
-      description_id: "Mendalami pengembangan back-end dengan framework Laravel 12 (MVC) untuk membangun aplikasi web terstruktur dan aman. Berhasil merancang dan membangun projek Portal Berita Digital (Info Seputar +62) sebagai output magang.",
-      description_en: "Diving deep into backend development with the Laravel 12 framework (MVC) to build structured and secure web applications. Successfully designed and built the Digital News Portal (Info Seputar +62) project as an internship output.",
+      description_id: "Mendalami pengembangan back-end dengan framework Laravel 12 (MVC) untuk membangun aplikasi web terstruktur dan aman.",
+      details_id: "Berhasil merancang dan membangun projek Portal Berita Digital (Info Seputar +62) sebagai output magang.",
+      description_en: "Diving deep into backend development with the Laravel 12 framework (MVC) to build structured and secure web applications.",
+      details_en: "Successfully designed and built the Digital News Portal (Info Seputar +62) project as an internship output.",
       isEducation: false
     },
     {
