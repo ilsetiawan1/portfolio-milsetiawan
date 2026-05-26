@@ -86,45 +86,50 @@ export default function Projects() {
       {/* Header */}
       <SectionHeader
         title={t.title}
-        subtitle={t.subtitle}
+        subtitle={
+          <>
+            {t.subtitle_part1}
+            <span className="hidden md:inline">{t.subtitle_part2}</span>
+          </>
+        }
         align="center"
         className="animate-on-scroll mb-10"
       />
 
       {/* Tab Buttons Container */}
-      <div className="flex justify-center mb-12 animate-on-scroll px-4 md:px-0 w-full">
-        <div className="flex w-full max-w-[480px] md:w-auto p-1 bg-bg-secondary/80 backdrop-blur-md border border-border-base/50 rounded-xl md:rounded-2xl shadow-inner gap-1">
+      <div className="flex justify-center mb-12 animate-on-scroll px-0 w-full">
+        <div className="flex w-full max-w-[480px] md:w-auto p-1 bg-bg-secondary/80 backdrop-blur-md border border-border-base/50 rounded-xl md:rounded-2xl shadow-inner gap-0.5 sm:gap-1">
           <button
             onClick={() => setActiveTab("projects")}
-            className={`flex-1 md:flex-none flex items-center justify-center gap-1.5 md:gap-2.5 px-3 md:px-6 py-2.5 md:py-3 rounded-lg md:rounded-xl text-xs md:text-sm font-bold tracking-wide transition-all duration-200 cursor-pointer whitespace-nowrap ${
+            className={`flex-1 md:flex-none flex items-center justify-center gap-1 sm:gap-1.5 md:gap-2.5 px-1.5 min-[360px]:px-2.5 sm:px-4 md:px-6 py-2.5 md:py-3 rounded-lg md:rounded-xl text-[10px] min-[360px]:text-xs md:text-sm font-bold tracking-wide transition-all duration-200 cursor-pointer whitespace-nowrap ${
               activeTab === "projects"
                 ? "bg-bg-card text-text-primary border border-border-base shadow-sm"
                 : "text-text-secondary hover:text-text-primary border border-transparent"
             }`}
           >
-            <Code className="w-3.5 h-3.5 md:w-4 md:h-4" />
+            <Code className="w-3 h-3 min-[360px]:w-3.5 min-[360px]:h-3.5 md:w-4 md:h-4" />
             <span>Projects</span>
           </button>
           <button
             onClick={() => setActiveTab("certificates")}
-            className={`flex-1 md:flex-none flex items-center justify-center gap-1.5 md:gap-2.5 px-3 md:px-6 py-2.5 md:py-3 rounded-lg md:rounded-xl text-xs md:text-sm font-bold tracking-wide transition-all duration-200 cursor-pointer whitespace-nowrap ${
+            className={`flex-1 md:flex-none flex items-center justify-center gap-1 sm:gap-1.5 md:gap-2.5 px-1.5 min-[360px]:px-2.5 sm:px-4 md:px-6 py-2.5 md:py-3 rounded-lg md:rounded-xl text-[10px] min-[360px]:text-xs md:text-sm font-bold tracking-wide transition-all duration-200 cursor-pointer whitespace-nowrap ${
               activeTab === "certificates"
                 ? "bg-bg-card text-text-primary border border-border-base shadow-sm"
                 : "text-text-secondary hover:text-text-primary border border-transparent"
             }`}
           >
-            <Award className="w-3.5 h-3.5 md:w-4 md:h-4" />
+            <Award className="w-3 h-3 min-[360px]:w-3.5 min-[360px]:h-3.5 md:w-4 md:h-4" />
             <span>Certificates</span>
           </button>
           <button
             onClick={() => setActiveTab("tech")}
-            className={`flex-1 md:flex-none flex items-center justify-center gap-1.5 md:gap-2.5 px-3 md:px-6 py-2.5 md:py-3 rounded-lg md:rounded-xl text-xs md:text-sm font-bold tracking-wide transition-all duration-200 cursor-pointer whitespace-nowrap ${
+            className={`flex-1 md:flex-none flex items-center justify-center gap-1 sm:gap-1.5 md:gap-2.5 px-1.5 min-[360px]:px-2.5 sm:px-4 md:px-6 py-2.5 md:py-3 rounded-lg md:rounded-xl text-[10px] min-[360px]:text-xs md:text-sm font-bold tracking-wide transition-all duration-200 cursor-pointer whitespace-nowrap ${
               activeTab === "tech"
                 ? "bg-bg-card text-text-primary border border-border-base shadow-sm"
                 : "text-text-secondary hover:text-text-primary border border-transparent"
             }`}
           >
-            <Layers className="w-3.5 h-3.5 md:w-4 md:h-4" />
+            <Layers className="w-3 h-3 min-[360px]:w-3.5 min-[360px]:h-3.5 md:w-4 md:h-4" />
             <span>Tech Stack</span>
           </button>
         </div>
@@ -175,22 +180,22 @@ export default function Projects() {
 
         {/* Tech Stack Tab (Redesigned Skills) */}
         {activeTab === "tech" && (
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 sm:gap-6">
+          <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-2.5 min-[380px]:gap-3.5 sm:gap-6">
             {skills.map((skill) => (
               <div
                 key={skill.name}
-                className="group relative flex flex-col items-center justify-center p-6 bg-bg-card border border-border-base rounded-2xl hover:bg-bg-card-hover hover:border-border-hover hover:-translate-y-1 hover:shadow-lg dark:hover:shadow-black/25 transition-all duration-300 ease-out"
+                className="group relative flex flex-col items-center justify-center p-3 min-[380px]:p-4 sm:p-6 bg-bg-card border border-border-base rounded-xl sm:rounded-2xl hover:bg-bg-card-hover hover:border-border-hover hover:-translate-y-1 hover:shadow-lg dark:hover:shadow-black/25 transition-all duration-300 ease-out"
               >
                 {/* Decorative gradient overlay */}
-                <div className="absolute inset-0 pointer-events-none rounded-2xl bg-gradient-to-br from-text-primary/[0.015] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute inset-0 pointer-events-none rounded-xl sm:rounded-2xl bg-gradient-to-br from-text-primary/[0.015] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 
                 {/* Icon wrapper */}
-                <div className="w-14 h-14 sm:w-16 sm:h-16 flex items-center justify-center mb-3 group-hover:scale-105 transition-transform duration-300">
-                  <TechIcon name={skill.name} className="w-11 h-11 sm:w-12 sm:h-12" />
+                <div className="w-9 h-9 min-[380px]:w-11 min-[380px]:h-11 sm:w-16 sm:h-16 flex items-center justify-center mb-1.5 sm:mb-3 group-hover:scale-105 transition-transform duration-300">
+                  <TechIcon name={skill.name} className="w-6 h-6 min-[380px]:w-8 min-[380px]:h-8 sm:w-12 sm:h-12" />
                 </div>
                 
                 {/* Name */}
-                <span className="text-xs sm:text-sm font-bold text-text-primary tracking-wide text-center">
+                <span className="text-[10px] min-[380px]:text-xs sm:text-sm font-bold text-text-primary tracking-wide text-center">
                   {skill.name}
                 </span>
               </div>
