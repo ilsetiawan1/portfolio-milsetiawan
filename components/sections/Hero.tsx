@@ -61,7 +61,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-[calc(100vh-80px)] flex items-center py-10 md:py-28 overflow-hidden bg-bg-primary text-text-primary"
+      className="relative min-h-[calc(100vh-80px)] flex items-start max-md:pt-8 md:items-center py-10 md:py-28 overflow-hidden bg-bg-primary text-text-primary"
     >
       {/* Radial glow background */}
       <div className="absolute inset-0 pointer-events-none">
