@@ -24,7 +24,7 @@ export default function SectionHeader({
         {title}
       </h2>
       {subtitle && (
-        <p className="text-base md:text-lg text-text-secondary max-w-xl">
+        <p className="text-xs md:text-lg text-text-secondary max-w-xl">
           {subtitle}
         </p>
       )}
