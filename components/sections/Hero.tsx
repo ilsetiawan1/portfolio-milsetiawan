@@ -130,8 +130,8 @@ export default function Hero() {
               <ArrowRight className="w-4 h-4" />
             </button>
             <a
-              href="/cv/CV_Muhammad Ilham Setiawan_2026.pdf"
-              download="CV_Muhammad_Ilham_Setiawan_2026.pdf"
+              href="/cv/CV. Muhammad Ilham Setiawan_2026.pdf"
+              download="CV. Muhammad Ilham Setiawan_2026.pdf"
               className="inline-flex items-center justify-center gap-2 border border-border-base bg-transparent text-text-primary font-bold text-sm rounded-full py-2.5 sm:py-3.5 px-8 hover:bg-bg-secondary hover:border-border-hover active:scale-95 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-text-primary focus-visible:ring-offset-2"
             >
               <span>Download CV</span>
